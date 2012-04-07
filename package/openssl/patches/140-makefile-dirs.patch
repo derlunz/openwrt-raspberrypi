@@ -1,0 +1,11 @@
+--- a/Makefile.org
++++ b/Makefile.org
+@@ -109,7 +109,7 @@ LIBKRB5=
+ ZLIB_INCLUDE=
+ LIBZLIB=
+ 
+-DIRS=   crypto ssl engines apps test tools
++DIRS=   crypto ssl apps
+ ENGDIRS= ccgost
+ SHLIBDIRS= crypto ssl
+ 

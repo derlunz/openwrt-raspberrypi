@@ -1,55 +1,55 @@
+choice 
+	prompt "Analog Video Mode"
+    default RPI_SDTV_MODE_PAL
+	depends TARGET_raspberrypi
+	help
+        Sets the analog video mode when the raspberry pi boots
+
+    config RPI_SDTV_MODE_NTSC
+        bool "Normal NTSC 0"
+    config RPI_SDTV_MODE_NTSC_J
+        bool "Japanese NTSC 1"
+    config RPI_SDTV_MODE_PAL
+        bool "European PAL 2"
+    config RPI_SDTV_MODE_PAL_M
+        bool "Brazilian PAL 3"
+endchoice
+
+choice 
+	prompt "Analog Video Aspect Ratio"
+    default RPI_SDTV_ASPECT_4_3
+	depends TARGET_raspberrypi
+	help
+        Sets the analog video aspect ratio when the raspberry pi boots
+
+    config RPI_SDTV_ASPECT_4_3
+        bool "4:3"
+    config RPI_SDTV_ASPECT_14_9
+        bool "14:9"
+    config RPI_SDTV_ASPECT_16_9
+        bool "16:9"
+endchoice
+
+choice 
+	prompt "HDMI Video Mode"
+    default RPI_HDTV_MODE_PAL
+	depends TARGET_raspberrypi
+	help
+        Sets the hdmi video mode when the raspberry pi boots
+
+    config RPI_HDMI_CEA_VGA
+        bool "VGA 1"
+    config RPI_HDMI_CEA_720p60
+        bool "720p60 4"
+    config RPI_HDMI_CEA_1080i50
+        bool "1080i50 20"
+endchoice
+
 config RPI_SD_CARD_SIZE
 	string "SDCard size (in MB)"
 	depends TARGET_raspberrypi
 	default "256"
 	help
 	  Builds and image suitable for sdcards of this size. Note, you may also use sdcards of greater size, but you will have waste some space.
-
-choice 
-	prompt "Analog Video Mode"
-    default SDTV_MODE_PAL
-	depends TARGET_raspberrypi
-	help
-        Sets the analog video mode when the raspberry pi boots
-
-    config SDTV_MODE_NTSC
-        bool "Normal NTSC 0"
-    config SDTV_MODE_NTSC_J
-        bool "Japanese NTSC 1"
-    config SDTV_MODE_PAL
-        bool "European PAL 2"
-    config SDTV_MODE_PAL_M
-        bool "Brazilian PAL 3"
-endchoice
-
-choice 
-	prompt "Analog Video Aspect Ratio"
-    default SDTV_ASPECT_4_3
-	depends TARGET_raspberrypi
-	help
-        Sets the analog video aspect ratio when the raspberry pi boots
-
-    config SDTV_ASPECT_4_3
-        bool "4:3"
-    config SDTV_ASPECT_14_9
-        bool "14:9"
-    config SDTV_ASPECT_16_9
-        bool "16:9"
-endchoice
-
-choice 
-	prompt "HDMI Video Mode"
-    default HDTV_MODE_PAL
-	depends TARGET_raspberrypi
-	help
-        Sets the hdmi video mode when the raspberry pi boots
-
-    config HDMI_CEA_VGA
-        bool "VGA 1"
-    config HDMI_CEA_720p60
-        bool "720p60 4"
-    config HDMI_CEA_1080i50
-        bool "1080i50 20"
-endchoice
 
 

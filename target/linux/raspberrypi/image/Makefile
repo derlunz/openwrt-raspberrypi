@@ -7,20 +7,10 @@
 include $(TOPDIR)/rules.mk
 include $(INCLUDE_DIR)/image.mk
 
-ifneq ($(CONFIG_RPI_FIRMWARE),)
-define Build/Clean
-	$(MAKE) -C rpi-firmware clean
-endef
+MKDOSFS=$(STAGING_DIR_HOST)/bin/mkdosfs
+MCP=$(STAGING_DIR_HOST)/bin/mcopy
 
-define Build/Prepare
-	$(MAKE) -C rpi-firmware prepare
-endef
-
-define Build/Compile
-	$(MAKE) -C rpi-firmware compile
-endef
-endif
-
+BOOTDIR="$(KDIR)/rpi-boot-files"
 
 define Image/BuildKernel
 	python ./gen_kern_header.py $(KDIR)/first32k.bin 
@@ -28,8 +18,6 @@ define Image/BuildKernel
 	cp $(KDIR)/kernel.img $(BIN_DIR)/$(IMG_PREFIX)-kernel.img
 	cp $(LINUX_DIR)/arch/$(ARCH)/boot/$(subst "",,$(KERNELNAME)) $(BIN_DIR)/openwrt-$(BOARD)-vmlinux.elf
 endef
-
-BOOTDIR="$(KDIR)/rpi-boot-files"
 
 define Image/Build/bootpart
 	#Copy firmware files to their directory

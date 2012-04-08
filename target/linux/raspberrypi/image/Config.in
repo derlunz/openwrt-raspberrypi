@@ -1,8 +1,3 @@
-config RPI_FIRMWARE
-	bool "Build Raspberry Pi Firmware"
-	depends TARGET_raspberrypi
-	default y
-
 config RPI_SD_CARD_SIZE
 	string "SDCard size (in MB)"
 	depends TARGET_raspberrypi

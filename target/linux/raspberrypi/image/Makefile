@@ -24,8 +24,15 @@ define Image/Build/bootpart
 	$(INSTALL_DIR) $(KDIR)/boot.vfat
 	$(CP) $(BOOTDIR)/bootcode.bin $(KDIR)/boot.vfat
 	$(CP) $(BOOTDIR)/loader.bin $(KDIR)/boot.vfat
-	#TODO: select some cpu/gpu ram layout
-	$(CP) $(BOOTDIR)/start.elf $(KDIR)/boot.vfat
+ifneq ($(CONFIG_RPI_RAM_CPU_128),)
+	$(CP) $(BOOTDIR)/arm128_start.elf $(KDIR)/boot.vfat/start.elf
+endif
+ifneq ($(CONFIG_RPI_RAM_CPU_192),)
+	$(CP) $(BOOTDIR)/arm192_start.elf $(KDIR)/boot.vfat/start.elf
+endif
+ifneq ($(CONFIG_RPI_RAM_CPU_224),)
+	$(CP) $(BOOTDIR)/arm224_start.elf $(KDIR)/boot.vfat/start.elf
+endif
 	#TODO: adjust kernel cmdline from our settings
 	$(CP) $(BOOTDIR)/cmdline.txt $(KDIR)/boot.vfat
 	#TODO provide and configure

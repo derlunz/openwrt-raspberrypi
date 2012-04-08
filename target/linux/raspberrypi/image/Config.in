@@ -1,4 +1,18 @@
 choice 
+	prompt "RAM Layout"
+	default RPI_RAM_CPU_192
+	depends TARGET_raspberrypi
+	help
+		Selects how much of the board's RAM is accessible to the ARM CPU and how much for the GPU.
+	config RPI_RAM_CPU_128
+		bool "128 MB CPU / 128 MB GPU "
+	config RPI_RAM_CPU_192
+		bool "192 MB CPU / 64 MB GPU "
+	config RPI_RAM_CPU_224
+		bool "224 MB CPU / 32 MB GPU "
+endchoice
+
+choice
 	prompt "Analog Video Mode"
     default RPI_SDTV_MODE_PAL
 	depends TARGET_raspberrypi

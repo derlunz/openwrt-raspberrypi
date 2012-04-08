@@ -68,7 +68,8 @@ define Image/Prepare
 endef
 
 define Image/Build
-	@echo IMAGE BUILD
+	$(call Image/Build/$(1))
+	$(call Image/Build/bootpart)
 	$(call Image/Build/sdcard)
 	dd if=$(KDIR)/root.$(1) of=$(BIN_DIR)/openwrt-$(BOARD)-root.$(1) bs=128k conv=sync
 endef
